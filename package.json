@@ -1,0 +1,27 @@
+{
+  "name": "jwt-cart",
+  "version": "1.0.1",
+  "description": "Easy JavaScript library for store & manage your items locally",
+  "main": "./src/jwtCart.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hastes/jwt-cart.git"
+  },
+  "keywords": [
+    "jwt",
+    "shopping-cart",
+    "cart"
+  ],
+  "author": "Roman Komarov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hastes/jwt-cart/issues"
+  },
+  "homepage": "https://github.com/Hastes/jwt-cart#readme",
+  "dependencies": {
+    "jwt-simple'": "0.5.6"
+  }
+}
