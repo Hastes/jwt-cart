@@ -52,7 +52,6 @@ import JwtCart from 'jwt-cart'
   <button type="submit">Add item</button>
 </form>
 ```
-
 2. Setup Cart
 
 ```javascript
@@ -75,13 +74,6 @@ import JwtCart from 'jwt-cart'
   // This method scan page and bind forms with class "jwt-cart-item"
   jwtCart.bindItems(); 
 ```
-
-
-## Browsers support
-
-| ![][ie]<br />IE / Edge | ![][firefox]<br />Firefox | ![][chrome]<br />Chrome | ![][safari]<br />Safari | ![][opera]<br />Opera |
-| ---------------------- | ------------------------- | ----------------------- | ----------------------- | --------------------- |
-| IE11, Edge       | last 10 versions          | last 10 versions        | last 10 versions        | last 10 versions      |
 
 
 ## License
