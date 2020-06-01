@@ -1,6 +1,6 @@
 {
   "name": "jwt-cart",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easy JavaScript library for store & manage your items locally",
   "main": "./src/jwtCart.js",
   "scripts": {
