@@ -55,8 +55,8 @@ import JwtCart from 'jwt-cart'
 2. Setup Cart
 
 ```javascript
-  const onItemAdded = (form, isInit, item, items) => {
-    // isInit is true when item added during bind bindItems
+  const onItemAdded = (form, item, items) => {
+    // isInit is true 
     // your code
     // EXAMPLE: form.getElementsByTagName('button')[0].innerHTML = 'Remove product';
   }
@@ -65,15 +65,32 @@ import JwtCart from 'jwt-cart'
     // your code
     // EXAMPLE: form.getElementsByTagName('button')[0].innerHTML = 'Add product';
   }
+  
+  const onBind = (form, item, items) => {
+    // Call when item added during bind bindItems (page inizialized)
+    // your code
+    // EXAMPLE: form.getElementsByTagName('button')[0].innerHTML = 'Remove product';
+  }
 
-  const jwtCart = new JwtCart('my-cart');
+  const onChange = (items) => {
+    // Call when local store was mutated
+  }
+  
+  const jwtCart = new JwtCart('my-cart-key');
 
   jwtCart.onAdd(onItemAdded);
   jwtCart.onRemove(onItemRemoved);
+  jwtCart.onBind(onBind);
+  jwtCart.onChange(onChange);
 
   // This method scan page and bind forms with class "jwt-cart-item"
-  jwtCart.bindItems(); 
+  jwtCart.bindItems();
 ```
+
+#### Allowed methods
+1. `jwtCart.clearAll()` - remove all items
+2. `jwtCart.addItem()` - add item to cart
+3. `jwtCart.removeItem()` - remove item from cart
 
 
 ## License
