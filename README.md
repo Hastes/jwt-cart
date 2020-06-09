@@ -89,8 +89,8 @@ import JwtCart from 'jwt-cart'
 
 #### Allowed methods
 1. `jwtCart.clearAll()` - remove all items
-2. `jwtCart.addItem()` - add item to cart
-3. `jwtCart.removeItem()` - remove item from cart
+2. `jwtCart.addItem(item)` - add item to cart, item is required an object which contains id and optional fields
+3. `jwtCart.removeItem(item)` - remove item from cart, item is required an object which contains id
 
 
 ## License
