@@ -8,8 +8,10 @@ class JwtCart {
   constructor(jwtKey) {
     this._items = {};
 
-    this._observersOnAdd = [];
-    this._observersOnRemove = [];
+    this._observerOnAdd = () => {};
+    this._observerOnRemove = () => {};
+    this._observerOnBind = () => {};
+    this._observerOnChange = () => {};
   
     this.jwtKey = jwtKey;
 
@@ -23,6 +25,7 @@ class JwtCart {
   set items(val) {
     const serializedItems = JSON.stringify(val);
     localStorage.setItem(JWT_CART_ITEMS_KEY, serializedItems);
+    this._observerOnChange(val);
   }
 
   get token() {
@@ -47,7 +50,7 @@ class JwtCart {
       const item = this._items[form.id.value];
 
       if (item) {
-        this._observersOnAdd.map(callback => callback(form, true, item, this.items));
+        this._observerOnBind(form, item, this.items);
       };
     }
   }
@@ -56,14 +59,14 @@ class JwtCart {
     this._items[item.id] = item;
     this.items = Object.assign({}, this._items)
 
-    this._observersOnAdd.map(callback => callback(form, false, item, this.items));
+    this._observerOnAdd(form, item, this.items);
   }
 
   removeItem(item, form = null) {
     delete this._items[item.id];
     this.items = Object.assign({}, this._items)
 
-    this._observersOnRemove.map(callback => callback(form, item, this.items));
+    this._observerOnRemove(form, item, this.items);
   }
 
   clearAll() {
@@ -74,12 +77,22 @@ class JwtCart {
 
   onAdd(callback) {
     // Subscribe on add
-    this._observersOnAdd.push(callback);
+    this._observerOnAdd = callback;
   }
 
   onRemove(callback) {
     // Subscribe on remove
-    this._observersOnRemove.push(callback);
+    this._observerOnRemove = callback;
+  }
+
+  onBind(callback) {
+    // Subscribe on bind
+    this._observerOnBind = callback;
+  }
+
+  onItemsChange(callback) {
+    // Subscribe on set items
+    this._observerOnChange = callback;
   }
 
 }
